@@ -29,8 +29,8 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public RatingDTO getRating(String id) throws RatingException {
-        Optional<Rating> optionalRating = ratingRepository.findById(Integer.valueOf(id));
-        Rating rating= optionalRating.orElseThrow(()->new RatingException("Could not find"));
+        Optional<Rating> optionalRating = ratingRepository.findById(id);
+        Rating rating= optionalRating.orElseThrow(()-> new RatingException("Could not find"));
         return RatingDTO.toDTO(rating);
     }
 
